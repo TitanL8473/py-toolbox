@@ -10,6 +10,9 @@
 | `average(numbers)` | 求一组数字的平均数 |
 | `best_subject(subjects)` | 传入「科目: 分数」字典，返回分数最高的科目名 |
 | `count_lines(path)` | 统计文本文件的行数；文件不存在时返回 -1 |
+| `describe(path)` | 返回「文件名 \| 后缀 \| 上级目录名」形式的描述 |
+| `list_py_files(folder)` | 列出文件夹本层所有 `.py` 文件名，按名字排序 |
+| `count_all_py(folder)` | 递归统计文件夹下所有 `.py` 文件总数 |
 
 ## 用法
 
@@ -20,6 +23,11 @@ mytools.count_vowels("Hello World")        # 3
 mytools.average([70, 85, 92.5])            # 82.5
 mytools.best_subject({"语文": 70, "数学": 85, "英语": 60})   # 数学
 mytools.count_lines("data.txt")            # 4
+
+# Day 8 新增：文件与目录工具
+mytools.describe("data.txt")               # data.txt | 后缀 .txt | 上级目录 ...
+mytools.list_py_files(".")                 # ['.py 文件名列表，已排序']
+mytools.count_all_py(".")                  # 递归统计 .py 总数
 ```
 
 也可以直接运行 `main.py` 看全部示例：
@@ -27,6 +35,8 @@ mytools.count_lines("data.txt")            # 4
 ```bash
 python main.py
 ```
+
+> `main.py` 用 `Path(__file__).parent` 定位文件，所以在任何目录下运行都能找到 `data.txt`。
 
 ## 环境
 
@@ -39,8 +49,9 @@ python main.py
      写清楚，未来的你会感谢现在的你。 -->
 
 - [ ] `average([])` 传空列表时会抛 `ZeroDivisionError`，还没处理
-- [ ] `count_lines` 用的是相对路径，从别的目录运行时找不到文件
+- [ ] 还缺一个 `folder_report(folder)`：递归统计文件数 / 总大小 / 按后缀分组
 - [ ] 还没写单元测试
+- [ ] `count_lines` 的提示信息没带上具体路径，出问题时不好定位
 
 ## 背景
 
